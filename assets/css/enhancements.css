@@ -46,23 +46,27 @@ body::before {
   background: #0E0B09;
 }
 
+/* PART 1: Lighten the Background Image and Overlay */
+
 .hero__bg-image {
+  /* Hacemos la imagen mucho más brillante y con más color */
   opacity: 1;
-  filter: brightness(0.38) saturate(0.7);
+  filter: brightness(0.70) saturate(0.85); /* ANTES: brightness(0.38) saturate(0.7) */
 }
 
 .hero__bg-overlay {
+  /* Reducimos drásticamente la opacidad de los gradientes negros */
   background:
     linear-gradient(
       105deg,
-      rgba(14,11,9,.97) 0%,
-      rgba(14,11,9,.88) 35%,
-      rgba(14,11,9,.55) 62%,
-      rgba(14,11,9,.18) 100%
+      rgba(14,11,9,.80) 0%,   /* ANTES: .97 (Casi negro sólido) */
+      rgba(14,11,9,.65) 35%,  /* ANTES: .88 */
+      rgba(14,11,9,.40) 62%,  /* ANTES: .55 */
+      rgba(14,11,9,.05) 100%  /* ANTES: .18 (Casi transparente) */
     ),
     linear-gradient(
       to top,
-      rgba(14,11,9,.85) 0%,
+      rgba(14,11,9,.70) 0%,   /* ANTES: .85 */
       transparent 40%
     );
 }
@@ -103,15 +107,9 @@ body::before {
   gap: .8rem;
   position: relative;
 }
-.hero__eyebrow::before {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: var(--grad-accent);
-  border-radius: 999px;
-  box-shadow: 0 0 8px rgba(27,79,155,.5);
-  flex-shrink: 0;
+.hero__eyebrow {
+  /* El texto pequeño de arriba: "Ingeniería eléctrica industrial" */
+  color: #FFFFFF; /* Cambiamos de azul oscuro a blanco puro para máxima lectura */
 }
 
 .hero__title {
@@ -139,21 +137,17 @@ body::before {
 }
 
 .hero__title-accent {
-  display: block;
-  color: var(--clr-accent);
+  /* El texto azul del título: "para la industria" */
+  color: #5B8DD9; /* Cambiamos el azul oscuro corporativo por un azul mucho más claro y vibrante que brilla sobre el fondo */
   text-shadow:
-    0 0 60px rgba(27,79,155,.25),
-    0 2px 0 rgba(0,0,0,.4);
+    0 2px 20px rgba(91, 141, 217, 0.45), /* Añadimos un resplandor suave del nuevo color */
+    0 2px 0 rgba(0,0,0,.6); /* Mantenemos el borde oscuro para definición */
 }
 
 .hero__subtitle {
-  font-size: clamp(.95rem, 1.8vw, 1.1rem);
-  color: rgba(255,255,255,.55);
-  line-height: 1.8;
-  margin-bottom: var(--sp-10);
-  padding-left: var(--sp-5);
-  border-left: 2px solid rgba(27,79,155,.35);
-  max-width: 48ch;
+  /* El párrafo de abajo: "Fabricación, instalación..." */
+  color: rgba(255,255,255, 1); /* Cambiamos de blanco semi-transparente (.55) a blanco sólido */
+  border-left-color: rgba(255,255,255, 0.3); /* Suavizamos el borde izquierdo */
 }
 
 .hero__actions {
