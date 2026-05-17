@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería de Servicios — Tecnoindustrias Fabriano</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --accent:         #1B4F9B;
+      --accent-dark:    #153E7E;
+      --accent-pale:    #EEF4FC;
+      --accent-light:   #B8CDE8;
+
+      --bg:             #FAFAF9;
+      --bg-section:     #F5F5F4;
+      --surface:        #FFFFFF;
+      --surface-dark:   #0F1C3A;
+      --carbon:         #050C1A;
+
+      --text:           #0F1C3A;
+      --text-mid:       #44403C;
+      --text-muted:     #78716C;
+      --border:         #E7E5E4;
+      --border-dark:    #A8A29E;
+
+      --shadow-card:    0 2px 12px rgba(0,0,0,.07), 0 1px 4px rgba(0,0,0,.04);
+      --shadow-hover:   0 12px 40px rgba(0,0,0,.14), 0 4px 16px rgba(0,0,0,.07);
+      --shadow-accent:  0 8px 32px rgba(27,79,155,.28);
+      --shadow-lb:      0 32px 80px rgba(0,0,0,.55);
+
+      --radius:         10px;
+      --radius-sm:      6px;
+      --radius-pill:    999px;
+
+      --font-display:   'Barlow Condensed', sans-serif;
+      --font-body:      'Lato', sans-serif;
+
+      --ease-out:       cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-spring:    cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* ============================================================
+       RESET
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+
+    /* ============================================================
+       LAYOUT HELPERS
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 5vw, 2.5rem);
+    }
+
+    /* ============================================================
+       PAGE HEADER
+    ============================================================ */
+    .page-header {
+      background: var(--surface-dark);
+      padding: 3.5rem 0 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(249,115,22,.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dark) 45%, transparent 100%);
+    }
+    .page-header__inner {
+      position: relative;
+      z-index: 1;
+    }
+    .page-header__eyebrow {
+      font-family: var(--font-display);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .75rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .page-header__eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+    .page-header__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -.02em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: .75rem;
+    }
+    .page-header__title span { color: var(--accent); }
+    .page-header__subtitle {
+      font-size: 1rem;
+      color: rgba(255,255,255,.5);
+      max-width: 56ch;
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       SECTION TABS NAV
+    ============================================================ */
+    .gallery-nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .gallery-nav__inner {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .gallery-nav__inner::-webkit-scrollbar { display: none; }
+    .gallery-nav__tab {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: 1.1rem 1.5rem;
+      font-family: var(--font-display);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 3px solid transparent;
+      transition: color .2s var(--ease-out), border-color .2s var(--ease-out), background-color .2s var(--ease-out);
+      white-space: nowrap;
+    }
+    .gallery-nav__tab:hover {
+      color: var(--text);
+      background: var(--accent-pale);
+    }
+    .gallery-nav__tab.is-active {
+      color: var(--accent-dark);
+      border-bottom-color: var(--accent);
+      background: var(--accent-pale);
+    }
+    .gallery-nav__dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: .4;
+      transition: opacity .2s, transform .2s var(--ease-spring);
+    }
+    .gallery-nav__tab.is-active .gallery-nav__dot,
+    .gallery-nav__tab:hover .gallery-nav__dot {
+      opacity: 1;
+      transform: scale(1.4);
+    }
+
+    /* ============================================================
+       GALLERY SECTION
+    ============================================================ */
+    .gallery-section {
+      padding: 5rem 0;
+      display: none;
+    }
+    .gallery-section.is-active {
+      display: block;
+      animation: sectionIn .4s var(--ease-out) both;
+    }
+    @keyframes sectionIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section header */
+    .gallery-section__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .gallery-section__meta {}
+    .gallery-section__eyebrow {
+      font-family: var(--font-display);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .4rem;
+    }
+    .gallery-section__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -.01em;
+      color: var(--text);
+      line-height: 1.05;
+      margin-bottom: .5rem;
+    }
+    .gallery-section__desc {
+      font-size: .9rem;
+      color: var(--text-muted);
+      max-width: 55ch;
+      line-height: 1.65;
+    }
+    .gallery-section__count {
+      font-family: var(--font-display);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+      padding: .4rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      flex-shrink: 0;
+    }
+    .gallery-section__count span {
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    /* ============================================================
+       GALLERY GRID
+    ============================================================ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    /* Variantes de tamaño para mosaico */
+    .gallery-grid .g-item:nth-child(4n+1) { grid-column: span 2; }
+    .gallery-grid .g-item:nth-child(7n+1) { grid-column: span 1; }
+    .gallery-grid .g-item:nth-child(9n+1) { grid-column: span 3; }
+
+    /* Item de galería */
+    .g-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--border);
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+      /* Stagger de entrada */
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity .5s var(--ease-out),
+        transform .5s var(--ease-out),
+        box-shadow .3s var(--ease-out);
+    }
+    .g-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .g-item:hover {
+      box-shadow: var(--shadow-hover);
+      z-index: 2;
+    }
+
+    /* Imagen */
+    .g-item__img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+    }
+    .g-item:nth-child(9n+1) .g-item__img-wrap { aspect-ratio: 21 / 7; }
+    .g-item:nth-child(4n+1) .g-item__img-wrap { aspect-ratio: 16 / 8; }
+
+    .g-item__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s var(--ease-out);
+      /* Placeholder gradients por área */
+      background: linear-gradient(135deg, #d6d3d1 0%, #a8a29e 100%);
+    }
+    .g-item:hover .g-item__img {
+      transform: scale(1.06);
+    }
+
+    /* Overlay */
+    .g-item__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(28,25,23,.85) 0%,
+        rgba(28,25,23,.3) 45%,
+        rgba(28,25,23,.0) 70%
+      );
+      opacity: 0;
+      transition: opacity .3s var(--ease-out);
+    }
+    .g-item:hover .g-item__overlay { opacity: 1; }
+
+    /* Botón de zoom */
+    .g-item__zoom {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 50%;
+      color: #fff;
+      font-size: .9rem;
+      opacity: 0;
+      transform: scale(.7) rotate(-15deg);
+      transition:
+        opacity .25s var(--ease-out),
+        transform .3s var(--ease-spring),
+        background-color .2s;
+    }
+    .g-item:hover .g-item__zoom {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+    .g-item__zoom:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Caption sobre la imagen (aparece en hover) */
+    .g-item__hover-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.25rem 1rem .9rem;
+      transform: translateY(6px);
+      opacity: 0;
+      transition:
+        transform .3s var(--ease-out),
+        opacity .25s var(--ease-out);
+    }
+    .g-item:hover .g-item__hover-caption {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .g-item__hover-tag {
+      display: inline-block;
+      padding: 2px .6rem;
+      font-family: var(--font-display);
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--accent);
+      border-radius: var(--radius-pill);
+      margin-bottom: .35rem;
+    }
+    .g-item__hover-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    /* Caption visible BAJO la imagen */
+    .g-item__caption {
+      padding: .9rem 1rem 1rem;
+      background: var(--surface);
+      border-top: 2px solid transparent;
+      transition: border-color .25s var(--ease-out);
+    }
+    .g-item:hover .g-item__caption {
+      border-top-color: var(--accent);
+    }
+    .g-item__caption-title {
+      font-family: var(--font-display);
+      font-size: .95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      color: var(--text);
+      margin-bottom: .25rem;
+      line-height: 1.2;
+    }
+    .g-item__caption-desc {
+      font-size: .78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .g-item__caption-meta {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-top: .5rem;
+    }
+    .g-item__caption-tag {
+      font-family: var(--font-display);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      background: var(--accent-pale);
+      padding: 2px .55rem;
+      border-radius: var(--radius-pill);
+    }
+    .g-item__caption-year {
+      font-size: .7rem;
+      color: var(--border-dark);
+    }
+
+    /* ============================================================
+       LIGHTBOX
+    ============================================================ */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .3s var(--ease-out);
+    }
+    #lightbox.lb-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lb-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(14,11,9,.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+
+    .lb-stage {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 1100px;
+      max-height: 92vh;
+    }
+
+    /* Figura central */
+    .lb-figure {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: min(90vw, 900px);
+      max-height: 88vh;
+      transform: scale(.94);
+      opacity: 0;
+      transition:
+        transform .35s var(--ease-spring),
+        opacity .3s var(--ease-out);
+    }
+    #lightbox.lb-open .lb-figure {
+      transform: scale(1);
+      opacity: 1;
+    }
+    #lightbox.lb-closing .lb-figure {
+      transform: scale(.94);
+      opacity: 0;
+    }
+
+    /* Imagen */
+    .lb-img-wrap {
+      position: relative;
+      line-height: 0;
+    }
+    #lb-img {
+      max-width: 100%;
+      max-height: calc(88vh - 100px);
+      object-fit: contain;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lb);
+      display: block;
+      transition: opacity .25s var(--ease-out);
+      background: var(--surface-dark);
+      min-width: 200px;
+      min-height: 120px;
+    }
+    #lb-img.lb-loading {
+      opacity: .3;
+    }
+
+    /* Spinner de carga */
+    .lb-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 36px;
+      height: 36px;
+      margin: -18px 0 0 -18px;
+      border: 3px solid rgba(255,255,255,.15);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      opacity: 0;
+      transition: opacity .2s;
+      pointer-events: none;
+    }
+    #lb-img.lb-loading ~ .lb-spinner { opacity: 1; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Barra naranja de progreso */
+    .lb-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: var(--radius-pill);
+      width: 0%;
+      opacity: 0;
+      transition: width .3s var(--ease-out);
+    }
+    #lb-img.lb-loading ~ .lb-progress {
+      opacity: 1;
+      width: 60%;
+    }
+
+    /* Info panel bajo la imagen */
+    .lb-info {
+      width: 100%;
+      margin-top: 1rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .lb-info__text {}
+    .lb-info__tag {
+      display: inline-block;
+      padding: 3px .7rem;
+      font-family: var(--font-display);
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--accent);
+      border-radius: var(--radius-pill);
+      margin-bottom: .4rem;
+    }
+    #lb-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: .3rem;
+    }
+    #lb-desc {
+      font-size: .82rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.55;
+      max-width: 52ch;
+    }
+    .lb-info__counter {
+      font-family: var(--font-display);
+      font-size: .75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.35);
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: .04em;
+    }
+    .lb-info__counter strong {
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    /* Controles de navegación */
+    .lb-btn {
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 50%;
+      color: rgba(255,255,255,.8);
+      font-size: 1.1rem;
+      transition:
+        background .2s,
+        border-color .2s,
+        transform .2s var(--ease-spring),
+        color .2s;
+      align-self: center;
+    }
+    .lb-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      transform: scale(1.1);
+    }
+    .lb-btn:active {
+      transform: scale(.95);
+    }
+    .lb-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Botón cerrar */
+    #lb-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 9100;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      color: rgba(255,255,255,.7);
+      font-size: 1.3rem;
+      line-height: 1;
+      transition:
+        background .2s,
+        color .2s,
+        transform .3s var(--ease-spring);
+    }
+    #lb-close:hover {
+      background: rgba(255,255,255,.18);
+      color: #fff;
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    /* Thumbnails strip */
+    .lb-thumbs {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9100;
+      display: flex;
+      gap: .4rem;
+      padding: .4rem .6rem;
+      background: rgba(28,25,23,.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-pill);
+      max-width: 90vw;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .lb-thumbs::-webkit-scrollbar { display: none; }
+    .lb-thumb {
+      flex-shrink: 0;
+      width: 40px;
+      height: 30px;
+      border-radius: 4px;
+      overflow: hidden;
+      opacity: .45;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition:
+        opacity .2s,
+        border-color .2s,
+        transform .2s var(--ease-spring);
+    }
+    .lb-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .lb-thumb.is-active {
+      opacity: 1;
+      border-color: var(--accent);
+      transform: scale(1.12);
+    }
+    .lb-thumb:hover:not(.is-active) {
+      opacity: .8;
+      transform: scale(1.05);
+    }
+
+    /* Teclado hint */
+    .lb-keys-hint {
+      position: absolute;
+      top: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9100;
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+      font-size: .65rem;
+      color: rgba(255,255,255,.25);
+      font-family: var(--font-display);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      animation: hintFade 4s 1.5s var(--ease-out) forwards;
+      opacity: 1;
+    }
+    @keyframes hintFade {
+      0%   { opacity: 1; }
+      70%  { opacity: 1; }
+      100% { opacity: 0; pointer-events: none; }
+    }
+    .lb-key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 6px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 3px;
+      font-size: .6rem;
+    }
+
+    /* ============================================================
+       ALTERNATE SECTION BACKGROUNDS
+    ============================================================ */
+    .gallery-section:nth-child(even) { background: var(--bg-section); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid .g-item:nth-child(4n+1),
+      .gallery-grid .g-item:nth-child(7n+1),
+      .gallery-grid .g-item:nth-child(9n+1) { grid-column: span 2; }
+
+      .gallery-section__header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+      .lb-stage { flex-direction: column; gap: .5rem; }
+      .lb-btn { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; gap: .9rem; }
+      .gallery-grid .g-item:nth-child(n) { grid-column: span 1; }
+      .gallery-section { padding: 3rem 0; }
+      .lb-thumbs { display: none; }
+      .lb-info { flex-direction: column; gap: .4rem; }
+      .lb-keys-hint { display: none; }
+    }
+
+    /* ============================================================
+       SWIPE INDICATOR (mobile)
+    ============================================================ */
+    .lb-swipe-hint {
+      display: none;
+      position: absolute;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9100;
+      font-family: var(--font-display);
+      font-size: .65rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      animation: hintFade 4s 1.5s var(--ease-out) forwards;
+    }
+    @media (max-width: 600px) { .lb-swipe-hint { display: block; } }
+
+    /* ============================================================
+       SCROLL PROGRESS BAR
+    ============================================================ */
+    .scroll-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent);
+      z-index: 9999;
+      width: 0%;
+      transition: width .1s linear;
+      box-shadow: 0 0 8px rgba(249,115,22,.5);
+    }
+
+    /* ============================================================
+       BACK BUTTON
+    ============================================================ */
+    @keyframes btnSlideIn {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .back-btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 22px;
+  background: rgba(27, 79, 155, 0.75); /* ← Azul corporativo sutilmente traslúcido */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-family: var(--font-display, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.25); /* ← Un borde un toque más nítido */
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  box-shadow:
+    0 2px 12px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.25s ease,
+    border-color 0.35s ease;
+  animation: btnSlideIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.back-btn:hover {
+  background: #153E7E; /* ← Tu azul oscuro corporativo pleno */
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px); /* ← Se eleva sutilmente */
+  box-shadow:
+    0 6px 20px rgba(21, 62, 126, 0.4), /* ← Sombra con un toque azul oscuro */
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+    .back-btn:active {
+      transform: translateY(0px);
+      box-shadow: 0 2px 10px rgba(249,115,22,0.2);
+    }
+
+    .back-btn__arrow {
+      display: inline-flex;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .back-btn:hover .back-btn__arrow {
+      transform: translateX(-4px);
+    }
+  </style>
+</head>
+
+<body>
+<a href="index.html" class="back-btn" aria-label="Volver al inicio">
+  <span class="back-btn__arrow" aria-hidden="true">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.5 2L3.5 7L8.5 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+  Volver al inicio
+</a>
+
+  <!-- Scroll progress -->
+  <div class="scroll-bar" id="scrollBar" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       PAGE HEADER
+  ============================================================ -->
+  <header class="page-header" role="banner">
+    <div class="container page-header__inner">
+      <p class="page-header__eyebrow">Tecnoindustrias Fabriano</p>
+      <h1 class="page-header__title">Galería de <span>Trabajos</span></h1>
+      <p class="page-header__subtitle">Documentación fotográfica de proyectos ejecutados en cada área de especialización. Hacé clic en cualquier imagen para ampliarla.</p>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       TABS DE SECCIÓN
+  ============================================================ -->
+  <nav class="gallery-nav" aria-label="Secciones de galería" role="tablist">
+    <div class="container">
+      <div class="gallery-nav__inner">
+        <button class="gallery-nav__tab is-active" role="tab" aria-selected="true"  aria-controls="sec-fabricaciones"   data-section="fabricaciones">
+          <span class="gallery-nav__dot" aria-hidden="true"></span>Fabricaciones
+        </button>
+        <button class="gallery-nav__tab"             role="tab" aria-selected="false" aria-controls="sec-instalaciones"   data-section="instalaciones">
+          <span class="gallery-nav__dot" aria-hidden="true"></span>Instalaciones Eléctricas
+        </button>
+        <button class="gallery-nav__tab"             role="tab" aria-selected="false" aria-controls="sec-automatizacion" data-section="automatizacion">
+          <span class="gallery-nav__dot" aria-hidden="true"></span>Automatización y Domótica
+        </button>
+        <button class="gallery-nav__tab"             role="tab" aria-selected="false" aria-controls="sec-corrientes"     data-section="corrientes">
+          <span class="gallery-nav__dot" aria-hidden="true"></span>Corrientes Débiles
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <main id="main">
+
+    <!-- =========================================================
+         SECCIÓN 1 — FABRICACIONES
+    ========================================================== -->
+    <section
+      id="sec-fabricaciones"
+      class="gallery-section is-active"
+      role="tabpanel"
+      aria-labelledby="tab-fabricaciones"
+      data-section="fabricaciones"
+    >
+      <div class="container">
+        <div class="gallery-section__header">
+          <div class="gallery-section__meta">
+            <p class="gallery-section__eyebrow">Área 01</p>
+            <h2 class="gallery-section__title">Fabricaciones</h2>
+            <p class="gallery-section__desc">Tableros eléctricos, centros de control de motores y unidades especiales fabricados a medida en nuestro taller.</p>
+          </div>
+          <div class="gallery-section__count">
+            <span>6</span> proyectos
+          </div>
+        </div>
+
+        <div class="gallery-grid" data-gallery="fabricaciones" role="list">
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/fab-01.jpg"
+            data-thumb="assets/images/gallery/fab-01.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/fab-01.jpg" alt="Tablero de distribución BT 2000A" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/fab-02.jpg"
+            data-thumb="assets/images/gallery/fab-02.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/fab-02.jpg" alt="Centro de Control de Motores industrial" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/fab-03.jpg"
+            data-thumb="assets/images/gallery/fab-03.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/fab-03.jpg" alt="Tablero de comando para línea de envasado" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/fab-04.jpg"
+            data-thumb="assets/images/gallery/fab-04.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/fab-04.jpg" alt="Unidad de transferencia automática ATS" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/fab-05.jpg"
+            data-thumb="assets/images/gallery/fab-05.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/fab-05.jpg" alt="Banco de capacitores para compensación reactiva" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/fab-06.jpg"
+            data-thumb="assets/images/gallery/fab-06.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/fab-06.jpg" alt="Tablero antideflagrante zona ATEX" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /.gallery-grid fabricaciones -->
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECCIÓN 2 — INSTALACIONES ELÉCTRICAS
+    ========================================================== -->
+    <section
+      id="sec-instalaciones"
+      class="gallery-section"
+      role="tabpanel"
+      aria-labelledby="tab-instalaciones"
+      data-section="instalaciones"
+      hidden
+    >
+      <div class="container">
+        <div class="gallery-section__header">
+          <div class="gallery-section__meta">
+            <p class="gallery-section__eyebrow">Área 02</p>
+            <h2 class="gallery-section__title">Instalaciones Eléctricas</h2>
+            <p class="gallery-section__desc">Proyectos de media y baja tensión, subestaciones transformadoras, grupos electrógenos y energía solar fotovoltaica.</p>
+          </div>
+          <div class="gallery-section__count"><span>4</span> proyectos</div>
+        </div>
+
+        <div class="gallery-grid" data-gallery="instalaciones" role="list">
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/inst-01.jpg"
+            data-thumb="assets/images/gallery/inst-01.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/inst-01.jpg" alt="Subestación transformadora exterior 1000 kVA" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/inst-02.jpg"
+            data-thumb="assets/images/gallery/inst-02.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/inst-02.jpg" alt="Paneles solares fotovoltaicos en cubierta industrial" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/inst-03.jpg"
+            data-thumb="assets/images/gallery/inst-03.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/inst-03.jpg" alt="Grupo electrógeno diésel en sala técnica" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/inst-04.jpg"
+            data-thumb="assets/images/gallery/inst-04.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/inst-04.jpg" alt="Tendido de cable subterráneo de media tensión" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECCIÓN 3 — AUTOMATIZACIÓN Y DOMÓTICA
+    ========================================================== -->
+    <section
+      id="sec-automatizacion"
+      class="gallery-section"
+      role="tabpanel"
+      aria-labelledby="tab-automatizacion"
+      data-section="automatizacion"
+      hidden
+    >
+      <div class="container">
+        <div class="gallery-section__header">
+          <div class="gallery-section__meta">
+            <p class="gallery-section__eyebrow">Área 03</p>
+            <h2 class="gallery-section__title">Automatización y Domótica</h2>
+            <p class="gallery-section__desc">Sistemas SCADA, PLC, HMI, control de procesos industriales y soluciones de domótica para oficinas y centros logísticos.</p>
+          </div>
+          <div class="gallery-section__count"><span>4</span> proyectos</div>
+        </div>
+
+        <div class="gallery-grid" data-gallery="automatizacion" role="list">
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/aut-01.jpg"
+            data-thumb="assets/images/gallery/aut-01.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/aut-01.jpg" alt="Sala de control SCADA industrial" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/aut-02.jpg"
+            data-thumb="assets/images/gallery/aut-02.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/aut-02.jpg" alt="Automatización de línea de producción industrial" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/aut-03.jpg"
+            data-thumb="assets/images/gallery/aut-03.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/aut-03.jpg" alt="Sistema BMS en oficina corporativa moderna" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/aut-04.jpg"
+            data-thumb="assets/images/gallery/aut-04.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/aut-04.jpg" alt="Centro de distribución logístico automatizado" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECCIÓN 4 — CORRIENTES DÉBILES
+    ========================================================== -->
+    <section
+      id="sec-corrientes"
+      class="gallery-section"
+      role="tabpanel"
+      aria-labelledby="tab-corrientes"
+      data-section="corrientes"
+      hidden
+    >
+      <div class="container">
+        <div class="gallery-section__header">
+          <div class="gallery-section__meta">
+            <p class="gallery-section__eyebrow">Área 04</p>
+            <h2 class="gallery-section__title">Corrientes Débiles</h2>
+            <p class="gallery-section__desc">Redes estructuradas, fibra óptica, sistemas de detección de incendios y soluciones electrónicas a medida.</p>
+          </div>
+          <div class="gallery-section__count"><span>4</span> proyectos</div>
+        </div>
+
+        <div class="gallery-grid" data-gallery="corrientes" role="list">
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/corr-01.jpg"
+            data-thumb="assets/images/gallery/corr-01.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/corr-01.jpg" alt="Rack de cableado estructurado categoría 6A" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/corr-02.jpg"
+            data-thumb="assets/images/gallery/corr-02.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/corr-02.jpg" alt="Sistema de detección analógica contra incendios" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/corr-03.jpg"
+            data-thumb="assets/images/gallery/corr-03.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/corr-03.jpg" alt="Fibra óptica monomodo en bandeja portacables" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="g-item" role="listitem" tabindex="0"
+            data-title="ESPERAR INFORMACION"
+            data-desc="ESPERAR INFORMACION"
+            data-tag="ESPERAR INFORMACION"
+            data-year="ESPERAR INFORMACION"
+            data-src="assets/images/gallery/corr-04.jpg"
+            data-thumb="assets/images/gallery/corr-04.jpg">
+            <div class="g-item__img-wrap">
+              <img class="g-item__img" src="assets/images/gallery/corr-04.jpg" alt="Placa electrónica de telemetría desarrollada a medida" loading="lazy" />
+              <div class="g-item__overlay" aria-hidden="true"></div>
+              <button class="g-item__zoom" aria-label="Ver imagen ampliada" tabindex="-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+              <div class="g-item__hover-caption" aria-hidden="true">
+                <span class="g-item__hover-tag">ESPERAR INFORMACION</span>
+                <h3 class="g-item__hover-title">ESPERAR INFORMACION</h3>
+              </div>
+            </div>
+            <div class="g-item__caption">
+              <h3 class="g-item__caption-title">ESPERAR INFORMACION</h3>
+              <p class="g-item__caption-desc">ESPERAR INFORMACION</p>
+              <div class="g-item__caption-meta">
+                <span class="g-item__caption-tag">ESPERAR INFORMACION</span>
+                <span class="g-item__caption-year">ESPERAR INFORMACION</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /#main -->
+
+
+  <!-- ============================================================
+       LIGHTBOX
+  ============================================================ -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de imagen" aria-hidden="true">
+    <div class="lb-backdrop" id="lb-backdrop"></div>
+
+    <!-- Hint teclado -->
+    <div class="lb-keys-hint" aria-hidden="true">
+      <kbd class="lb-key">←</kbd> <kbd class="lb-key">→</kbd> navegar
+      &nbsp;·&nbsp;
+      <kbd class="lb-key">ESC</kbd> cerrar
+    </div>
+
+    <!-- Swipe hint móvil -->
+    <div class="lb-swipe-hint" aria-hidden="true">← deslizá para navegar →</div>
+
+    <!-- Botón cerrar -->
+    <button id="lb-close" aria-label="Cerrar lightbox" title="Cerrar (Esc)">&#x2715;</button>
+
+    <!-- Stage con nav + figura -->
+    <div class="lb-stage">
+      <button class="lb-btn" id="lb-prev" aria-label="Imagen anterior (flecha izquierda)">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <figure class="lb-figure" role="img" aria-labelledby="lb-title" aria-describedby="lb-desc">
+        <div class="lb-img-wrap">
+          <img id="lb-img" src="" alt="" />
+          <span class="lb-spinner" aria-hidden="true"></span>
+          <span class="lb-progress" aria-hidden="true"></span>
+        </div>
+        <div class="lb-info">
+          <div class="lb-info__text">
+            <span class="lb-info__tag" id="lb-tag"></span>
+            <p id="lb-title"></p>
+            <p id="lb-desc"></p>
+          </div>
+          <div class="lb-info__counter" aria-live="polite">
+            <strong id="lb-current">1</strong> / <span id="lb-total">1</span>
+          </div>
+        </div>
+      </figure>
+
+      <button class="lb-btn" id="lb-next" aria-label="Siguiente imagen (flecha derecha)">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <!-- Thumbnails -->
+    <div class="lb-thumbs" id="lb-thumbs" role="tablist" aria-label="Miniaturas de galería"></div>
+  </div>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+  (() => {
+    'use strict';
+
+    /* ============================================================
+       UTILIDADES
+    ============================================================ */
+    const $ = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+    const on = (el, ev, fn, opts) => el && el.addEventListener(ev, fn, opts);
+
+
+    /* ============================================================
+       SCROLL PROGRESS BAR
+    ============================================================ */
+    const scrollBar = $('#scrollBar');
+    on(window, 'scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      scrollBar.style.width = Math.min(pct, 100) + '%';
+    }, { passive: true });
+
+
+    /* ============================================================
+       TAB NAVIGATION — Cambio de sección
+    ============================================================ */
+    const tabs    = $$('.gallery-nav__tab');
+    const sections = $$('.gallery-section');
+
+    function activateTab(tab) {
+      const target = tab.dataset.section;
+
+      tabs.forEach(t => {
+        t.classList.toggle('is-active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+
+      sections.forEach(sec => {
+        const isTarget = sec.dataset.section === target;
+        sec.classList.toggle('is-active', isTarget);
+        if (isTarget) {
+          sec.removeAttribute('hidden');
+          // Trigger reveal para los items de esta sección
+          revealItems(sec);
+        } else {
+          sec.setAttribute('hidden', '');
+        }
+      });
+    }
+
+    tabs.forEach(tab => {
+      on(tab, 'click', () => activateTab(tab));
+    });
+
+
+    /* ============================================================
+       SCROLL REVEAL — Animación de entrada de cards
+    ============================================================ */
+    const IO = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = (el.dataset.revealIndex || 0) * 70;
+          setTimeout(() => el.classList.add('is-visible'), delay);
+          IO.unobserve(el);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    function revealItems(container = document) {
+      const items = $$('.g-item:not(.is-visible)', container);
+      items.forEach((item, i) => {
+        item.dataset.revealIndex = i;
+        IO.observe(item);
+      });
+    }
+
+    // Iniciar con la sección activa
+    revealItems();
+
+
+    /* ============================================================
+       LIGHTBOX — Estado
+    ============================================================ */
+    const lb          = $('#lightbox');
+    const lbImg       = $('#lb-img');
+    const lbTitle     = $('#lb-title');
+    const lbDesc      = $('#lb-desc');
+    const lbTag       = $('#lb-tag');
+    const lbCurrent   = $('#lb-current');
+    const lbTotal     = $('#lb-total');
+    const lbThumbs    = $('#lb-thumbs');
+    const lbClose     = $('#lb-close');
+    const lbPrev      = $('#lb-prev');
+    const lbNext      = $('#lb-next');
+    const lbBackdrop  = $('#lb-backdrop');
+
+    let currentGallery = [];   // Array de items del gallery activo
+    let currentIndex   = 0;
+    let isOpen         = false;
+    let touchStartX    = 0;
+    let touchStartY    = 0;
+    let lastFocus      = null;
+
+    /* Recopilar items de una galería */
+    function getGalleryItems(sectionEl) {
+      return $$('.g-item', sectionEl);
+    }
+
+    /* ── Abrir ── */
+    function openLightbox(items, index) {
+      currentGallery = items;
+      currentIndex   = index;
+      isOpen         = true;
+
+      lastFocus = document.activeElement;
+
+      buildThumbs();
+      loadImage(index, false);
+
+      lb.classList.add('lb-open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      // Foco accesible
+      setTimeout(() => lbClose.focus(), 100);
+    }
+
+    /* ── Cerrar ── */
+    function closeLightbox() {
+      if (!isOpen) return;
+      isOpen = false;
+
+      lb.classList.add('lb-closing');
+      lb.classList.remove('lb-open');
+
+      setTimeout(() => {
+        lb.classList.remove('lb-closing');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lbImg.src = '';
+      }, 320);
+
+      lastFocus && lastFocus.focus();
+    }
+
+    /* ── Cargar imagen ── */
+    function loadImage(index, animate = true) {
+      const item = currentGallery[index];
+      if (!item) return;
+
+      currentIndex = index;
+
+      // UI loading state
+      lbImg.classList.add('lb-loading');
+
+      // Preload
+      const tmp = new Image();
+      tmp.src = item.dataset.src;
+
+      tmp.onload = () => {
+        lbImg.src  = item.dataset.src;
+        lbImg.alt  = item.dataset.title || '';
+        lbImg.classList.remove('lb-loading');
+      };
+      tmp.onerror = () => {
+        // Fallback: usar src de la img existente
+        const existingImg = $('img', item);
+        lbImg.src = existingImg ? existingImg.src : '';
+        lbImg.classList.remove('lb-loading');
+      };
+
+      // Metadata
+      lbTitle.textContent   = item.dataset.title || '';
+      lbDesc.textContent    = item.dataset.desc  || '';
+      lbTag.textContent     = item.dataset.tag   || '';
+      lbCurrent.textContent = index + 1;
+      lbTotal.textContent   = currentGallery.length;
+
+      // Actualizar thumbs
+      $$('.lb-thumb', lbThumbs).forEach((th, i) => {
+        th.classList.toggle('is-active', i === index);
+        th.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+    }
+
+    /* ── Construir thumbnails ── */
+    function buildThumbs() {
+      lbThumbs.innerHTML = '';
+      currentGallery.forEach((item, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'lb-thumb' + (i === currentIndex ? ' is-active' : '');
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+        btn.setAttribute('aria-label', `Ver imagen ${i + 1}: ${item.dataset.title || ''}`);
+        btn.title = item.dataset.title || `Imagen ${i + 1}`;
+
+        const img = document.createElement('img');
+        img.src    = item.dataset.thumb || ($('img', item) ? $('img', item).src : '');
+        img.alt    = '';
+        img.loading = 'lazy';
+        btn.appendChild(img);
+
+        on(btn, 'click', () => loadImage(i));
+        lbThumbs.appendChild(btn);
+      });
+    }
+
+    /* ── Navegación ── */
+    function navigate(dir) {
+      const len = currentGallery.length;
+      const next = (currentIndex + dir + len) % len;
+      loadImage(next);
+    }
+
+
+    /* ============================================================
+       EVENTOS DE APERTURA — clic en cualquier g-item
+    ============================================================ */
+    on(document, 'click', (e) => {
+      const item = e.target.closest('.g-item');
+      if (!item) return;
+
+      // Obtener la sección activa
+      const section = item.closest('.gallery-section');
+      const items   = getGalleryItems(section);
+      const index   = items.indexOf(item);
+
+      openLightbox(items, index);
+    });
+
+    // Teclado sobre g-item
+    on(document, 'keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const item = e.target.closest('.g-item');
+        if (item) {
+          e.preventDefault();
+          item.click();
+        }
+      }
+    });
+
+
+    /* ============================================================
+       EVENTOS DEL LIGHTBOX
+    ============================================================ */
+    on(lbClose,   'click', closeLightbox);
+    on(lbBackdrop,'click', closeLightbox);
+    on(lbPrev,    'click', () => navigate(-1));
+    on(lbNext,    'click', () => navigate(+1));
+
+    /* Teclado */
+    on(document, 'keydown', (e) => {
+      if (!isOpen) return;
+      switch(e.key) {
+        case 'Escape':    closeLightbox();   break;
+        case 'ArrowLeft': navigate(-1);      break;
+        case 'ArrowRight':navigate(+1);      break;
+        case 'Home':      loadImage(0);      break;
+        case 'End':       loadImage(currentGallery.length - 1); break;
+      }
+    });
+
+    /* Trap focus dentro del lightbox */
+    on(lb, 'keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const focusable = $$('button:not([disabled]), [tabindex="0"]', lb);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last  = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    /* Touch / Swipe */
+    on(lb, 'touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    on(lb, 'touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        navigate(dx < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+
+
+    /* ============================================================
+       HEADER STICKY SCROLL
+    ============================================================ */
+    const nav = $('.gallery-nav');
+    let lastScrollY = 0;
+    on(window, 'scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > lastScrollY && scrollY > 80) {
+        nav.style.transform = 'translateY(-100%)';
+        nav.style.transition = 'transform .3s cubic-bezier(0.4,0,0.2,1)';
+      } else {
+        nav.style.transform = 'translateY(0)';
+      }
+      lastScrollY = scrollY;
+    }, { passive: true });
+
+  })();
+  </script>
+
+</body>
+</html>

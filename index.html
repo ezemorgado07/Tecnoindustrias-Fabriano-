@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tecnoindustrias Fabriano — Ingeniería eléctrica, fabricaciones, instalaciones, automatización y corrientes débiles." />
+  <title>Tecnoindustrias Fabriano | Ingeniería Eléctrica</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,600&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/enhancements.css" />
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/projects-modal.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner container">
+
+      <a href="/" class="site-header__logo" aria-label="Tecnoindustrias Fabriano — Inicio">
+        <img src="assets/logo.jpg" alt="Tecnoindustrias Fabriano" class="site-header__logo-img" width="200" height="48" />
+      </a>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <ul class="site-nav__list" role="list">
+          <li class="site-nav__item">
+            <a href="#inicio" class="site-nav__link site-nav__link--active" aria-current="page">Inicio</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="#proyectos" class="site-nav__link">Proyectos</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="#nosotros" class="site-nav__link">Nosotros</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="#contacto" class="site-nav__link">Contacto</a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="https://wa.me/5491157550851?text=Hola%2C%20los%20contacto%20desde%20su%20sitio%20web.%20Me%20gustar%C3%ADa%20solicitar%20un%20presupuesto%20para..." class="site-header__cta btn btn--primary" target="_blank" rel="noopener noreferrer">
+        Comunicate con nosotros
+      </a>
+
+      <button class="site-header__hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-drawer">
+        <span class="site-header__hamburger-bar" aria-hidden="true"></span>
+        <span class="site-header__hamburger-bar" aria-hidden="true"></span>
+        <span class="site-header__hamburger-bar" aria-hidden="true"></span>
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       DRAWER MÓVIL
+  ============================================================ -->
+  <aside id="mobile-drawer" class="mobile-drawer" aria-label="Menú de navegación móvil" aria-hidden="true" role="dialog" tabindex="-1">
+    <div class="mobile-drawer__header">
+      <a href="/" class="mobile-drawer__logo">
+        <img src="assets/logo.svg" alt="Tecnoindustrias Fabriano" width="160" height="40" />
+      </a>
+      <button class="mobile-drawer__close" aria-label="Cerrar menú" aria-controls="mobile-drawer">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <nav class="mobile-nav" aria-label="Navegación móvil">
+      <ul class="mobile-nav__list mobile-nav__list--active" role="list" data-level="1">
+        <li class="mobile-nav__item"><a href="#inicio" class="mobile-nav__link">Inicio</a></li>
+        <li class="mobile-nav__item"><a href="#nosotros" class="mobile-nav__link">Nosotros</a></li>
+        <li class="mobile-nav__item mobile-nav__item--has-children">
+          <button class="mobile-nav__link mobile-nav__link--parent" data-target="mobile-level-servicios">
+            Servicios <span class="mobile-nav__arrow" aria-hidden="true"></span>
+          </button>
+        </li>
+        <li class="mobile-nav__item"><a href="#proyectos" class="mobile-nav__link">Proyectos</a></li>
+        <li class="mobile-nav__item"><a href="#contacto" class="mobile-nav__link">Contacto</a></li>
+      </ul>
+      <ul id="mobile-level-servicios" class="mobile-nav__list" role="list" data-level="2" hidden>
+        <li class="mobile-nav__item mobile-nav__item--back">
+          <button class="mobile-nav__back"><span aria-hidden="true">&#8592;</span> Volver</button>
+        </li>
+        <li class="mobile-nav__item mobile-nav__item--section-title">Servicios</li>
+        <li class="mobile-nav__item mobile-nav__item--has-children">
+          <button class="mobile-nav__link mobile-nav__link--parent" data-target="mobile-level-fabricaciones">
+            Fabricaciones <span class="mobile-nav__arrow" aria-hidden="true"></span>
+          </button>
+        </li>
+        <li class="mobile-nav__item mobile-nav__item--has-children">
+          <button class="mobile-nav__link mobile-nav__link--parent" data-target="mobile-level-instalaciones">
+            Instalaciones Eléctricas <span class="mobile-nav__arrow" aria-hidden="true"></span>
+          </button>
+        </li>
+        <li class="mobile-nav__item mobile-nav__item--has-children">
+          <button class="mobile-nav__link mobile-nav__link--parent" data-target="mobile-level-automatizacion">
+            Automatización y Domótica <span class="mobile-nav__arrow" aria-hidden="true"></span>
+          </button>
+        </li>
+        <li class="mobile-nav__item mobile-nav__item--has-children">
+          <button class="mobile-nav__link mobile-nav__link--parent" data-target="mobile-level-corrientes">
+            Corrientes Débiles <span class="mobile-nav__arrow" aria-hidden="true"></span>
+          </button>
+        </li>
+      </ul>
+      <ul id="mobile-level-fabricaciones" class="mobile-nav__list" role="list" data-level="3" hidden>
+        <li class="mobile-nav__item mobile-nav__item--back">
+          <button class="mobile-nav__back" data-target="mobile-level-servicios"><span aria-hidden="true">&#8592;</span> Servicios</button>
+        </li>
+        <li class="mobile-nav__item mobile-nav__item--section-title">Fabricaciones</li>
+        <li class="mobile-nav__item"><a href="/servicios/fabricaciones/tableros-electricos" class="mobile-nav__link">Tableros eléctricos</a></li>
+        <li class="mobile-nav__item"><a href="/servicios/fabricaciones/unidades-especiales" class="mobile-nav__link">Unidades especiales</a></li>
+      </ul>
+      <ul id="mobile-level-instalaciones" class="mobile-nav__list" role="list" data-level="3" hidden>
+        <li class="mobile-nav__item mobile-nav__item--back">
+          <button class="mobile-nav__back" data-target="mobile-level-servicios"><span aria-hidden="true">&#8592;</span> Servicios</button>
+        </li>
+        <li class="mobile-nav__item mobile-nav__item--section-title">Instalaciones Eléctricas</li>
+        <li class="mobile-nav__item"><a href="/servicios/instalaciones-electricas/mt-bt" class="mobile-nav__link">MT / BT</a></li>
+        <li class="mobile-nav__item mobile-nav__item--has-children">
+          <button class="mobile-nav__link mobile-nav__link--parent" data-target="mobile-level-generacion">
+            Generación <span class="mobile-nav__arrow" aria-hidden="true"></span>
+          </button>
+        </li>
+      </ul>
+      <ul id="mobile-level-generacion" class="mobile-nav__list" role="list" data-level="4" hidden>
+        <li class="mobile-nav__item mobile-nav__item--back">
+          <button class="mobile-nav__back" data-target="mobile-level-instalaciones"><span aria-hidden="true">&#8592;</span> Instalaciones</button>
+        </li>
+        <li class="mobile-nav__item mobile-nav__item--section-title">Generación</li>
+        <li class="mobile-nav__item"><a href="/servicios/instalaciones-electricas/generacion/grupos-electrogenos" class="mobile-nav__link">Grupos electrógenos</a></li>
+        <li class="mobile-nav__item"><a href="/servicios/instalaciones-electricas/generacion/energia-solar" class="mobile-nav__link">Energía solar</a></li>
+      </ul>
+      <ul id="mobile-level-automatizacion" class="mobile-nav__list" role="list" data-level="3" hidden>
+        <li class="mobile-nav__item mobile-nav__item--back">
+          <button class="mobile-nav__back" data-target="mobile-level-servicios"><span aria-hidden="true">&#8592;</span> Servicios</button>
+        </li>
+        <li class="mobile-nav__item mobile-nav__item--section-title">Automatización y Domótica</li>
+        <li class="mobile-nav__item"><a href="/servicios/automatizacion-domotica/industrias" class="mobile-nav__link">Industrias</a></li>
+        <li class="mobile-nav__item"><a href="/servicios/automatizacion-domotica/logistica" class="mobile-nav__link">Logística</a></li>
+        <li class="mobile-nav__item"><a href="/servicios/automatizacion-domotica/oficinas-corporativas" class="mobile-nav__link">Oficinas corporativas</a></li>
+      </ul>
+      <ul id="mobile-level-corrientes" class="mobile-nav__list" role="list" data-level="3" hidden>
+        <li class="mobile-nav__item mobile-nav__item--back">
+          <button class="mobile-nav__back" data-target="mobile-level-servicios"><span aria-hidden="true">&#8592;</span> Servicios</button>
+        </li>
+        <li class="mobile-nav__item mobile-nav__item--section-title">Corrientes Débiles</li>
+        <li class="mobile-nav__item"><a href="/servicios/corrientes-debiles/comunicaciones" class="mobile-nav__link">Comunicaciones</a></li>
+        <li class="mobile-nav__item"><a href="/servicios/corrientes-debiles/deteccion-incendios" class="mobile-nav__link">Sistemas detección incendios</a></li>
+        <li class="mobile-nav__item"><a href="/servicios/corrientes-debiles/electronica" class="mobile-nav__link">Soluciones en electrónica</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-drawer__footer">
+      <a href="https://wa.me/5491161152402?text=Hola%2C%20los%20contacto%20desde%20su%20sitio%20web.%20Me%20gustar%C3%ADa%20solicitar%20un%20presupuesto%20para..." class="btn btn--primary btn--full-width" target="_blank" rel="noopener noreferrer">
+        Solicitar presupuesto
+      </a>
+    </div>
+  </aside>
+  <div class="mobile-overlay" aria-hidden="true" tabindex="-1"></div>
+
+
+  <!-- ============================================================
+       MAIN
+  ============================================================ -->
+  <main id="main-content" role="main">
+
+    <!-- =========================================================
+         SECCIÓN 1: HERO
+    ========================================================== -->
+    <section id="inicio" class="section-hero" aria-label="Portada principal">
+      <div class="hero__background" aria-hidden="true">
+        <img src="assets/images/hero-bg2.jpg" alt="" class="hero__bg-image" role="presentation" loading="eager" />
+        <div class="hero__bg-overlay" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero__content container">
+        <div class="hero__text-block">
+          <p class="hero__eyebrow">Ingeniería eléctrica industrial</p>
+          <h1 class="hero__title">
+            <span class="hero__title-serif">Ingeniería que funciona</span>
+            Soluciones<br>eléctricas
+            <span class="hero__title-accent">para la industria</span>
+          </h1>
+          <p class="hero__subtitle">
+            Fabricación, instalación, automatización y corrientes débiles.<br />
+            Más de 20 años respaldando proyectos de alta complejidad.
+          </p>
+          <div class="hero__actions">
+<button type="button" id="heroProjectsBtn" class="btn btn--secondary btn--large">Proyectos realizados</button>
+          </div>
+        </div>
+
+        <!-- Cards de servicios en el hero -->
+        <div class="hero__services-grid">
+          <article class="hero__service-card" data-area="fabricaciones">
+            <h3 class="hero__service-card__title">Fabricaciones</h3>
+            <p class="hero__service-card__desc">Tableros eléctricos y unidades especiales a medida.</p>
+          </article>
+          <article class="hero__service-card" data-area="instalaciones">
+            <h3 class="hero__service-card__title">Instalaciones Eléctricas</h3>
+            <p class="hero__service-card__desc">MT/BT, grupos electrógenos y energía solar.</p>
+          </article>
+          <article class="hero__service-card" data-area="automatizacion">
+            <h3 class="hero__service-card__title">Automatización y Domótica</h3>
+            <p class="hero__service-card__desc">Automatización industrial, logística y oficinas.</p>
+          </article>
+          <article class="hero__service-card" data-area="corrientes-debiles">
+            <h3 class="hero__service-card__title">Corrientes Débiles</h3>
+            <p class="hero__service-card__desc">Comunicaciones, detección de incendios y electrónica.</p>
+          </article>
+        </div><!-- /.hero__services-grid -->
+
+      </div><!-- /.hero__content -->
+
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span class="hero__scroll-line"></span>
+        <span class="hero__scroll-label"></span>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECCIÓN 2: NOVEDADES (Carrusel)
+    ========================================================== -->
+    <section class="section-news-standalone" aria-label="Novedades de la empresa">
+      <div class="container">
+        <div class="hero__news-wrap">
+
+          <!-- Carrusel -->
+          <div class="hero__news-slider" aria-label="Novedades de la empresa">
+
+            <!-- Contador 01 / 04 -->
+            <div class="hero__news-counter" aria-hidden="true">
+              <span>01</span> / 04
+            </div>
+
+            <!-- Barra de progreso inferior -->
+            <div class="hero__news-progress"></div>
+
+            <!-- Slides -->
+            <div class="hero__news-track">
+
+              <article class="hero__news-slide is-active">
+                <div class="hero__news-img-wrap">
+                  <img src="assets/images/news/news-01.jpg" alt="Novedad 1" class="hero__news-img hero__news-img--portrait" loading="eager" />
+                  <div class="hero__news-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="hero__news-caption">
+                  <span class="hero__news-tag">Capacitación</span>
+                  <h4 class="hero__news-title">Curso de PLC y automatizaciones para nuestro equipo técnico</h4>
+                  <p class="hero__news-date">Marzo 2026</p>
+                </div>
+              </article>
+
+              <article class="hero__news-slide">
+                <div class="hero__news-img-wrap">
+                  <img src="assets/images/news/news-02.jpg" alt="Novedad 2" class="hero__news-img" loading="lazy" />
+                  <div class="hero__news-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="hero__news-caption">
+                  <span class="hero__news-tag">ESPERAR IMAGEN Y TITULOS</span>
+                  <h4 class="hero__news-title">ESPERAR IMAGEN Y TITULOS</h4>
+                  <p class="hero__news-date">ESPERAR IMAGEN Y TITULOS</p>
+                </div>
+              </article>
+
+              <article class="hero__news-slide">
+                <div class="hero__news-img-wrap">
+                  <img src="assets/images/news/news-03.jpg" alt="Novedad 3" class="hero__news-img" loading="lazy" />
+                  <div class="hero__news-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="hero__news-caption">
+                  <span class="hero__news-tag">ESPERAR IMAGEN Y TITULOS</span>
+                  <h4 class="hero__news-title">ESPERAR IMAGEN Y TITULOS</h4>
+                  <p class="hero__news-date">ESPERAR IMAGEN Y TITULOS</p>
+                </div>
+              </article>
+
+              <article class="hero__news-slide">
+                <div class="hero__news-img-wrap">
+                  <img src="assets/images/news/news-04.jpg" alt="Novedad 4" class="hero__news-img" loading="lazy" />
+                  <div class="hero__news-img-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="hero__news-caption">
+                  <span class="hero__news-tag">ESPERAR IMAGEN Y TITULOS</span>
+                  <h4 class="hero__news-title">ESPERAR IMAGEN Y TITULOS</h4>
+                  <p class="hero__news-date">ESPERAR IMAGEN Y TITULOS</p>
+                </div>
+              </article>
+
+            </div><!-- /.hero__news-track -->
+
+            <!-- Flechas (arriba izquierda, una al lado de la otra) -->
+            <button class="hero__news-arrow hero__news-arrow--prev" aria-label="Novedad anterior">
+              <span aria-hidden="true">&#8592;</span>
+            </button>
+            <button class="hero__news-arrow hero__news-arrow--next" aria-label="Novedad siguiente">
+              <span aria-hidden="true">&#8594;</span>
+            </button>
+
+            <!-- Dots como líneas -->
+            <div class="hero__news-dots" aria-hidden="true">
+              <span class="hero__news-dot is-active"></span>
+              <span class="hero__news-dot"></span>
+              <span class="hero__news-dot"></span>
+              <span class="hero__news-dot"></span>
+            </div>
+
+          </div><!-- /.hero__news-slider -->
+
+        </div><!-- /.hero__news-wrap -->
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SECCIÓN 3: PROYECTOS DESTACADOS
+    ========================================================== -->
+    <section id="proyectos" class="section-featured-projects" aria-labelledby="featured-projects-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-header__eyebrow">Portafolio</p>
+          <h2 id="featured-projects-heading" class="section-header__title">
+            Proyectos <span class="text-accent">destacados</span>
+          </h2>
+          <p class="section-header__subtitle">
+            Una selección de trabajos representativos en distintas industrias y escalas de intervención.
+          </p>
+        </header>
+        <div class="featured-projects-grid">
+          <article class="project-card project-card--featured" aria-label="Proyecto destacado principal">
+            <a href="/proyectos/tablero-principal-planta-logistica" class="project-card__link">
+              <figure class="project-card__figure">
+                <img src="assets/images/projects/krones-foto-3.jpg" alt="Tablero de distribución principal — Planta logística Zona Norte" class="project-card__image" loading="lazy" width="800" height="600" />
+                <div class="project-card__overlay" aria-hidden="true"></div>
+                <figcaption class="project-card__caption">
+                  <span class="project-card__area-tag">TIPO DE PROYECTO</span>
+                  <h3 class="project-card__title">PRIMER PROYECTO DESTACADO</h3>
+                  <p class="project-card__meta">FECHA Y LUGAR</p>
+                  <span class="project-card__arrow" aria-hidden="true">→</span>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="project-card" aria-label="Proyecto secundario 1">
+            <a href="/proyectos/instalacion-solar-industria-alimenticia" class="project-card__link">
+              <figure class="project-card__figure">
+                <img src="assets/images/projects/coppel-foto-6.jpg" alt="Instalación de paneles solares en industria alimenticia" class="project-card__image" loading="lazy" width="600" height="400" />
+                <div class="project-card__overlay" aria-hidden="true"></div>
+                <figcaption class="project-card__caption">
+                  <span class="project-card__area-tag">TIPO DE PROYECTO</span>
+                  <h3 class="project-card__title">SEGUNDO PROYECTO DESTACADO</h3>
+                  <p class="project-card__meta">FECHA Y LUGAR</p>
+                  <span class="project-card__arrow" aria-hidden="true">→</span>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="project-card" aria-label="Proyecto secundario 2">
+            <a href="/proyectos/automatizacion-linea-produccion" class="project-card__link">
+              <figure class="project-card__figure">
+                <img src="assets/images/projects/quilmes-foto-6.jpg" alt="Automatización de línea de producción en planta industrial" class="project-card__image" loading="lazy" width="600" height="400" />
+                <div class="project-card__overlay" aria-hidden="true"></div>
+                <figcaption class="project-card__caption">
+                  <span class="project-card__area-tag">TIPO DE PROYECTO</span>
+                  <h3 class="project-card__title">TERCER PROYECTO DESTACADO</h3>
+                  <p class="project-card__meta">FECHA Y LUGAR</p>
+                  <span class="project-card__arrow" aria-hidden="true">→</span>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div style="background:#F5F5F4; padding: 0.5rem 0 0;">
+      <div class="section-divider" style="margin-top: 2rem;">
+        <span class="section-divider__diamond" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         SECCIÓN 3: POR QUÉ ELEGIRNOS
+    ========================================================== -->
+    <section id="nosotros" class="section-why-us" aria-labelledby="why-us-heading">
+      <div class="container">
+        <div class="why-us__layout">
+          <div class="why-us__text-col">
+            <header class="section-header section-header--left">
+              <p class="section-header__eyebrow">¿Por qué Fabriano?</p>
+              <h2 id="why-us-heading" class="section-header__title">
+                Experiencia y precisión <br /><span class="text-accent">en cada proyecto</span>
+              </h2>
+              <p class="section-header__body">
+                Somos un equipo de ingenieros y técnicos especializados comprometidos con los más altos estándares de calidad, seguridad y cumplimiento de plazos.
+              </p>
+            </header>
+            <ul class="why-us__pillars" role="list">
+              <li class="why-us__pillar">
+                <div class="why-us__pillar-icon" aria-hidden="true">
+                  <img src="assets/icons/icon-team.svg" alt="" width="36" height="36" />
+                </div>
+                <div class="why-us__pillar-text">
+                  <h3 class="why-us__pillar-title">EXPERIENCIA TÉCNICA RECOMENDADA</h3>
+                  <p class="why-us__pillar-desc">Contamos con más de 20 años de trayectoria en proyectos eléctricos industriales de alta complejidad, aplicando soluciones eficientes y adaptadas a cada cliente.</p>
+                </div>
+              </li>
+              <li class="why-us__pillar">
+                <div class="why-us__pillar-icon" aria-hidden="true">
+                  <img src="assets/icons/icon-deadline.svg" alt="" width="36" height="36" />
+                </div>
+                <div class="why-us__pillar-text">
+                  <h3 class="why-us__pillar-title">CUMPLIMIENTO EN TIEMPO Y FORMA</h3>
+                  <p class="why-us__pillar-desc">Planificamos cada obra con precisión técnica y operativa, garantizando entregas en los plazos acordados y bajo estándares exigentes de calidad.</p>
+                </div>
+              </li>
+              <li class="why-us__pillar">
+                <div class="why-us__pillar-icon" aria-hidden="true">
+                  <img src="assets/icons/icon-instalaciones.svg" alt="" width="36" height="36" />
+                </div>
+                <div class="why-us__pillar-text">
+                  <h3 class="why-us__pillar-title">SOLUCIONES INTEGRALES</h3>
+                  <p class="why-us__pillar-desc">Desde la fabricación de tableros hasta la automatización y sistemas de energía, cubrimos todo el ciclo del proyecto eléctrico en un solo equipo.</p>
+                </div>
+              </li>
+              <li class="why-us__pillar">
+                <div class="why-us__pillar-icon" aria-hidden="true">
+                  <img src="assets/icons/icon-quality.svg" alt="" width="36" height="36" />
+                </div>
+                <div class="why-us__pillar-text">
+                  <h3 class="why-us__pillar-title">COMPROMISO CON LA SEGURIDAD Y LAS NORMAS</h3>
+                  <p class="why-us__pillar-desc">Trabajamos bajo normativas vigentes y protocolos de seguridad industrial, asegurando instalaciones confiables, certificables y duraderas.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="why-us__image-col" aria-hidden="true">
+            <figure class="why-us__image-figure">
+              <img src="assets/images/why-us-main2.jpg" alt="Equipo técnico de Tecnoindustrias Fabriano trabajando en instalación eléctrica industrial" class="why-us__image" loading="lazy" width="500" height="700" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-wave" aria-hidden="true" style="background:#F0EFED">
+      <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 L1440,0 L1440,60 L0,60 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+
+    <!-- =========================================================
+         SECCIÓN 5: SERVICIOS EN DETALLE
+    ========================================================== -->
+    <section class="section-services-detail" aria-labelledby="services-detail-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-header__eyebrow">En detalle</p>
+          <h2 id="services-detail-heading" class="section-header__title">
+            Qué hacemos <span class="text-accent">en cada área</span>
+          </h2>
+        </header>
+        <div class="services-detail__layout">
+          <nav class="services-tabs" aria-label="Áreas de servicio" role="tablist">
+            <button id="tab-fabricaciones" class="services-tabs__tab services-tabs__tab--active" role="tab" aria-selected="true" aria-controls="panel-fabricaciones">Fabricaciones</button>
+            <button id="tab-instalaciones" class="services-tabs__tab" role="tab" aria-selected="false" aria-controls="panel-instalaciones">Instalaciones Eléctricas</button>
+            <button id="tab-automatizacion" class="services-tabs__tab" role="tab" aria-selected="false" aria-controls="panel-automatizacion">Automatización y Domótica</button>
+            <button id="tab-corrientes" class="services-tabs__tab" role="tab" aria-selected="false" aria-controls="panel-corrientes">Corrientes Débiles</button>
+          </nav>
+          <div class="services-panels">
+            <div id="panel-fabricaciones" class="services-panel services-panel--active" role="tabpanel" aria-labelledby="tab-fabricaciones" tabindex="0">
+              <div class="services-panel__layout">
+                <div class="services-panel__accordions">
+                  <div class="accordion-item">
+                    <button class="accordion-item__trigger" aria-expanded="true" aria-controls="accordion-tableros" id="trigger-tableros">
+                      <span class="accordion-item__title">Tableros eléctricos</span>
+                      <span class="accordion-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="accordion-tableros" class="accordion-item__body accordion-item__body--open" role="region" aria-labelledby="trigger-tableros">
+                      <div class="accordion-item__content">
+                        <p class="accordion-item__description">Fabricamos tableros de distribución, comando, protección y control adaptados a las necesidades específicas de cada instalación.</p>
+                        <ul class="accordion-item__feature-list">
+                          <li>Tableros de distribución BT</li>
+                          <li>Tableros de comando y maniobra</li>
+                          <li>Centros de control de motores (CCM)</li>
+                          <li>Tableros para zonas clasificadas (ATEX)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <button class="accordion-item__trigger" aria-expanded="false" aria-controls="accordion-unidades" id="trigger-unidades">
+                      <span class="accordion-item__title">Unidades especiales</span>
+                      <span class="accordion-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="accordion-unidades" class="accordion-item__body" role="region" aria-labelledby="trigger-unidades" hidden>
+                      <div class="accordion-item__content">
+                        <p class="accordion-item__description">Desarrollamos unidades especiales para aplicaciones que requieren soluciones fuera de catálogo.</p>
+                        <ul class="accordion-item__feature-list">
+                          <li>Bancos de capacitores y compensadores</li>
+                          <li>Transferencias automáticas (ATS)</li>
+                          <li>Módulos de medición y telemetría</li>
+                          <li>Kioscos y estaciones de carga</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <aside class="services-panel__gallery" aria-label="Galería de Fabricaciones">
+                  <div class="area-gallery">
+                    <figure class="area-gallery__item area-gallery__item--tall"><img src="assets/images/services/fabricaciones-gallery-1.jpg" alt="Tablero de distribución principal terminado" loading="lazy" width="400" height="560" /></figure>
+                    <figure class="area-gallery__item"><img src="assets/images/services/fabricaciones-gallery-2.jpg" alt="Proceso de fabricación en taller" loading="lazy" width="400" height="270" /></figure>
+                    <figure class="area-gallery__item"><img src="assets/images/services/fabricaciones-gallery-3.jpg" alt="Detalle de cableado interno de tablero" loading="lazy" width="400" height="270" /></figure>
+                  </div>
+                </aside>
+              </div>
+            </div>
+            <div id="panel-instalaciones" class="services-panel" role="tabpanel" aria-labelledby="tab-instalaciones" tabindex="0" hidden>
+              <div class="services-panel__layout">
+                <div class="services-panel__accordions">
+                  <div class="accordion-item">
+                    <button class="accordion-item__trigger" aria-expanded="true" aria-controls="accordion-mt-bt" id="trigger-mt-bt">
+                      <span class="accordion-item__title">MT / BT</span>
+                      <span class="accordion-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="accordion-mt-bt" class="accordion-item__body accordion-item__body--open" role="region" aria-labelledby="trigger-mt-bt">
+                      <div class="accordion-item__content">
+                        <p class="accordion-item__description">Instalaciones eléctricas en media y baja tensión para plantas industriales, comercios y edificios.</p>
+                        <ul class="accordion-item__feature-list">
+                          <li>Líneas subterráneas</li>
+                          <li>Subestaciones transformadoras</li>
+                          <li>Instalaciones industriales BT</li>
+                          <li>Puestas a tierra y protecciones</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item accordion-item--has-children">
+                    <button class="accordion-item__trigger" aria-expanded="false" aria-controls="accordion-generacion" id="trigger-generacion">
+                      <span class="accordion-item__title">Generación</span>
+                      <span class="accordion-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="accordion-generacion" class="accordion-item__body" role="region" aria-labelledby="trigger-generacion" hidden>
+                      <div class="accordion-item__content">
+                        <p class="accordion-item__description">Soluciones de generación eléctrica continua y de respaldo.</p>
+                        <div class="accordion-item accordion-item--nested">
+                          <button class="accordion-item__trigger accordion-item__trigger--nested" aria-expanded="false" aria-controls="accordion-grupos" id="trigger-grupos">
+                            <span class="accordion-item__title">Grupos electrógenos</span>
+                            <span class="accordion-item__icon" aria-hidden="true"></span>
+                          </button>
+                          <div id="accordion-grupos" class="accordion-item__body" role="region" aria-labelledby="trigger-grupos" hidden>
+                            <div class="accordion-item__content">
+                              <p class="accordion-item__description">Instalación y puesta en marcha de grupos electrógenos diesel y a gas natural.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item accordion-item--nested">
+                          <button class="accordion-item__trigger accordion-item__trigger--nested" aria-expanded="false" aria-controls="accordion-solar" id="trigger-solar">
+                            <span class="accordion-item__title">Energía solar</span>
+                            <span class="accordion-item__icon" aria-hidden="true"></span>
+                          </button>
+                          <div id="accordion-solar" class="accordion-item__body" role="region" aria-labelledby="trigger-solar" hidden>
+                            <div class="accordion-item__content">
+                              <p class="accordion-item__description">Diseño e instalación de sistemas fotovoltaicos on-grid, off-grid e híbridos.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <aside class="services-panel__gallery" aria-label="Galería de Instalaciones Eléctricas">
+                  <div class="area-gallery">
+                    <figure class="area-gallery__item area-gallery__item--tall"><img src="assets/images/services/instalaciones-gallery-1.jpg" alt="Obra de instalación eléctrica en planta industrial" loading="lazy" width="400" height="560" /></figure>
+                    <figure class="area-gallery__item"><img src="assets/images/services/instalaciones-gallery-2.jpg" alt="Sala de celdas MT" loading="lazy" width="400" height="270" /></figure>
+                    <figure class="area-gallery__item"><img src="assets/images/services/instalaciones-gallery-3.jpg" alt="Instalación de paneles solares" loading="lazy" width="400" height="270" /></figure>
+                  </div>
+                </aside>
+              </div>
+            </div>
+            <div id="panel-automatizacion" class="services-panel" role="tabpanel" aria-labelledby="tab-automatizacion" tabindex="0" hidden>
+              <div class="services-panel__layout">
+                <div class="services-panel__accordions">
+                  <div class="accordion-item">
+                    <button class="accordion-item__trigger" aria-expanded="true" aria-controls="accordion-industrias" id="trigger-industrias">
+                      <span class="accordion-item__title">Industrias</span>
+                      <span class="accordion-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="accordion-industrias" class="accordion-item__body accordion-item__body--open" role="region" aria-labelledby="trigger-industrias">
+                      <div class="accordion-item__content">
+                        <p class="accordion-item__description">Automatización de procesos productivos, sistemas SCADA y PLCs.</p>
+                        <ul class="accordion-item__feature-list">
+                          <li>Automatización de líneas de producción</li>
+                          <li>Sistemas SCADA, PLCs y control de procesos</li>
+                          <li>Automatización logística: puertas, cintas y centros de distribución</li>
+                          <li>Domótica corporativa: iluminación, climatización y accesos</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <button class="accordion-item__trigger" aria-expanded="false" aria-controls="accordion-logistica" id="trigger-logistica">
+                      <span class="accordion-item__title">Logística</span>
+                      <span class="accordion-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="accordion-logistica" class="accordion-item__body" role="region" aria-labelledby="trigger-logistica" hidden>
+                      <div class="accordion-item__content">
+                        <p class="accordion-item__description">Sistemas de automatización para centros de distribución, gestión de puertas y cintas transportadoras.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <button class="accordion-item__trigger" aria-expanded="false" aria-controls="accordion-oficinas" id="trigger-oficinas">
+                      <span class="accordion-item__title">Oficinas corporativas</span>
+                      <span class="accordion-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="accordion-oficinas" class="accordion-item__body" role="region" aria-labelledby="trigger-oficinas" hidden>
+                      <div class="accordion-item__content">
+                        <p class="accordion-item__description">Soluciones de domótica para espacios corporativos: control de iluminación, climatización, seguridad y accesos.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <aside class="services-panel__gallery" aria-label="Galería de Automatización">
+                  <div class="area-gallery">
+                    <figure class="area-gallery__item area-gallery__item--tall"><img src="assets/images/services/automatizacion-gallery-1.jpg" alt="Control room con sistemas SCADA activos" loading="lazy" width="400" height="560" /></figure>
+                    <figure class="area-gallery__item"><img src="assets/images/services/automatizacion-gallery-2.jpg" alt="PLC programable en gabinete industrial" loading="lazy" width="400" height="270" /></figure>
+                    <figure class="area-gallery__item"><img src="assets/images/services/automatizacion-gallery-3.jpg" alt="Sistema de domótica en oficina corporativa" loading="lazy" width="400" height="270" /></figure>
+                  </div>
+                </aside>
+              </div>
+            </div>
+            <div id="panel-corrientes" class="services-panel" role="tabpanel" aria-labelledby="tab-corrientes" tabindex="0" hidden>
+              <div class="services-panel__layout">
+                <div class="services-panel__accordions">
+                  <div class="accordion-item">
+                    <button class="accordion-item__trigger" aria-expanded="true" aria-controls="accordion-comunicaciones" id="trigger-comunicaciones">
+                      <span class="accordion-item__title">Comunicaciones</span>
+                      <span class="accordion-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="accordion-comunicaciones" class="accordion-item__body accordion-item__body--open" role="region" aria-labelledby="trigger-comunicaciones">
+                      <div class="accordion-item__content">
+                        <p class="accordion-item__description">Redes estructuradas y sistemas de comunicación.</p>
+                        <ul class="accordion-item__feature-list">
+                          <li>Redes estructuradas, fibra óptica y Wi-Fi industrial</li>
+                          <li>Diseño e instalación de sistemas de detección y alarma de incendio</li>
+                          <li>Sistemas de monitoreo, telemetría e instrumentación industrial</li>
+                          <li>Soluciones electrónicas a medida para control y automatización</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <button class="accordion-item__trigger" aria-expanded="false" aria-controls="accordion-incendios" id="trigger-incendios">
+                      <span class="accordion-item__title">Sistemas detección incendios</span>
+                      <span class="accordion-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="accordion-incendios" class="accordion-item__body" role="region" aria-labelledby="trigger-incendios" hidden>
+                      <div class="accordion-item__content">
+                        <p class="accordion-item__description">Diseño, instalación y mantenimiento de sistemas de detección y alarma de incendio.</p>
+                        <div class="accordion-item__gallery" aria-label="Imágenes detección incendios">
+                          <figure class="accordion-gallery__item"><img src="assets/images/services/fire-thumb-1.jpg" alt="Central de detección de incendios instalada" loading="lazy" width="180" height="135" /></figure>
+                          <figure class="accordion-gallery__item"><img src="assets/images/services/fire-thumb-2.jpg" alt="Detector de humo analógico en plafón" loading="lazy" width="180" height="135" /></figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <button class="accordion-item__trigger" aria-expanded="false" aria-controls="accordion-electronica" id="trigger-electronica">
+                      <span class="accordion-item__title">Soluciones en electrónica</span>
+                      <span class="accordion-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div id="accordion-electronica" class="accordion-item__body" role="region" aria-labelledby="trigger-electronica" hidden>
+                      <div class="accordion-item__content">
+                        <p class="accordion-item__description">Desarrollo de soluciones electrónicas a medida: sistemas de monitoreo, telemetría e instrumentación industrial.</p>
+                        <div class="accordion-item__gallery" aria-label="Imágenes soluciones electrónicas">
+                          <figure class="accordion-gallery__item"><img src="assets/images/services/electro-thumb-1.jpg" alt="Placa electrónica de control industrial desarrollada a medida" loading="lazy" width="180" height="135" /></figure>
+                          <figure class="accordion-gallery__item"><img src="assets/images/services/electro-thumb-2.jpg" alt="Sistema de telemetría para planta de agua" loading="lazy" width="180" height="135" /></figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <aside class="services-panel__gallery" aria-label="Galería de Corrientes Débiles">
+                  <div class="area-gallery">
+                    <figure class="area-gallery__item area-gallery__item--tall"><img src="assets/images/services/corrientes-gallery-1.jpg" style="object-position: left center;" alt="Rack de comunicaciones en sala técnica" loading="lazy" width="400" height="560" /></figure>
+                    <figure class="area-gallery__item"><img src="assets/images/services/corrientes-gallery-2.jpg" alt="Central de incendios y central de comunicaciones" loading="lazy" width="400" height="270" /></figure>
+                    <figure class="area-gallery__item"><img src="assets/images/services/corrientes-gallery-3.jpg" alt="Electrónica de control en gabinete" loading="lazy" width="400" height="270" /></figure>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SECCIÓN 6: GALERÍA / PORTAFOLIO
+    ========================================================== -->
+    <section class="section-portfolio" aria-labelledby="portfolio-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-header__eyebrow">Trabajos realizados</p>
+          <h2 id="portfolio-heading" class="section-header__title">
+            Galería de <span class="text-accent">proyectos</span>
+          </h2>
+        
+        </header>
+        <div class="portfolio-grid" role="list" aria-label="Proyectos realizados">
+          <article class="portfolio-item portfolio-item--wide" role="listitem" data-area="fabricaciones">
+            <a href="/proyectos/cct-planta-quimica" class="portfolio-item__link">
+              <figure class="portfolio-item__figure">
+                <img src="assets/images/portfolio/port-01.jpg" alt="CCM para planta química — Zárate, 2024" loading="lazy" width="800" height="450" />
+                <figcaption class="portfolio-item__caption">
+                  <span class="portfolio-item__tag">TIPO DE PROYECTO</span>
+                  <h3 class="portfolio-item__title">PROYECTO 1</h3>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="portfolio-item" role="listitem" data-area="instalaciones">
+            <a href="/proyectos/subestacion-frigorifica" class="portfolio-item__link">
+              <figure class="portfolio-item__figure">
+                <img src="assets/images/portfolio/port-02.jpg" alt="Subestación transformadora — Frigorífico" loading="lazy" width="400" height="450" />
+                <figcaption class="portfolio-item__caption">
+                  <span class="portfolio-item__tag">TIPO DE PROYECTO</span>
+                  <h3 class="portfolio-item__title">PROYECTO 2</h3>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="portfolio-item" role="listitem" data-area="automatizacion">
+            <a href="/proyectos/scada-cerveceria" class="portfolio-item__link">
+              <figure class="portfolio-item__figure">
+                <img src="assets/images/portfolio/port-03.jpg" alt="Sistema SCADA — Cervecería artesanal" loading="lazy" width="400" height="450" />
+                <figcaption class="portfolio-item__caption">
+                  <span class="portfolio-item__tag">TIPO DE PROYECTO</span>
+                  <h3 class="portfolio-item__title">PROYECTO 3</h3>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="portfolio-item" role="listitem" data-area="corrientes-debiles">
+            <a href="/proyectos/cableado-estructurado-torre" class="portfolio-item__link">
+              <figure class="portfolio-item__figure">
+                <img src="assets/images/portfolio/port-04.jpg" alt="Cableado estructurado — Torre corporativa" loading="lazy" width="400" height="450" />
+                <figcaption class="portfolio-item__caption">
+                  <span class="portfolio-item__tag">TIPO DE PROYECTO</span>
+                  <h3 class="portfolio-item__title">PROYECTO 4</h3>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="portfolio-item" role="listitem" data-area="instalaciones">
+            <a href="/proyectos/solar-agro" class="portfolio-item__link">
+              <figure class="portfolio-item__figure">
+                <img src="assets/images/portfolio/port-05.jpg" alt="Sistema solar fotovoltaico — Establecimiento agropecuario" loading="lazy" width="400" height="450" />
+                <figcaption class="portfolio-item__caption">
+                  <span class="portfolio-item__tag">TIPO DE PROYECTO</span>
+                  <h3 class="portfolio-item__title">PROYECTO 5</h3>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="portfolio-item portfolio-item--wide" role="listitem" data-area="fabricaciones">
+            <a href="/proyectos/tablero-ats-hospital" class="portfolio-item__link">
+              <figure class="portfolio-item__figure">
+                <img src="assets/images/portfolio/port-06.jpg" alt="Tablero ATS para hospital — San Martín, 2023" loading="lazy" width="800" height="450" />
+                <figcaption class="portfolio-item__caption">
+                  <span class="portfolio-item__tag">TIPO DE PROYECTO</span>
+                  <h3 class="portfolio-item__title">PROYECTO 6</h3>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+        </div>
+        <div class="section-footer">
+          <a href="gallery.html" class="btn btn--primary btn--large">Ver portafolio completo <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SECCIÓN 7: CLIENTES
+    ========================================================== -->
+    <section class="section-clients" aria-labelledby="clients-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-header__eyebrow">Confían en nosotros</p>
+          <h2 id="clients-heading" class="section-header__title">
+            Empresas que <span class="text-accent">trabajan con Fabriano</span>
+          </h2>
+        </header>
+        <div class="info-hub">
+  <div class="info-station" data-station="1">
+    <button class="info-station__trigger">
+      <span class="info-station__icon">+</span>
+      <span class="info-station__title">CLIENTES</span>
+    </button>
+    <div class="info-station__content">
+      <h4 class="info-station__subtitle">NUESTROS CLIENTES</h4>
+      <ul class="info-station__list">
+        <li>- KRONES AG</li>
+        <li>- LC TECH</li>
+        <li>- CCU (COMPAÑÍA INDUSTRIAL CERVECERA)</li>
+        <li>- LENOVO</li>
+        <li>- ACCENTURE</li>
+        <li>- COPPEL</li>
+        <li>- LA DOLCE S.R.L</li>
+      </ul>
+    </div>
+  </div>
+
+<div class="info-station" data-station="2">
+  <button class="info-station__trigger">
+    <span class="info-station__icon">+</span>
+    <span class="info-station__title">CONTRATISTA PRINCIPAL</span>
+  </button>
+  <div class="info-station__content content--wide">
+    <h4 class="info-station__subtitle">PROYECTOS A TRAVÉS DE NUESTROS PARTNERS</h4>
+    <div class="contratista-group">
+      <div class="contratista-header">LC TECH</div>
+      <ul class="info-station__list list--nested">
+        <li>• CENTRAL HIDROELÉCTRICA "EL CHOCÓN"</li>
+        <li>• CENTRAL COSTANERA</li>
+        <li>• CENTRAL PUERTO</li>
+        <li>• BAYER</li>
+        <li>• GSK "GlaxoSmithKline"</li>
+      </ul>
+    </div>
+
+    <div class="contratista-group">
+      <div class="contratista-header">KRONES AG</div>
+      <ul class="info-station__list list--nested">
+        <li>• COCA COLA (FEMSA)</li>
+        <li>• COCA COLA (ARCA)</li>
+        <li>• CERVECERÍA QUILMES</li>
+        <li>• CCU (COMPAÑIA INDUSTRIAL CERVECERA)</li>
+      </ul>
+    </div>
+        <div class="contratista-group">
+      <div class="contratista-header">CRUZZOLIN</div>
+      <ul class="info-station__list list--nested">
+        <li>• LA DOLCE SRL</li>
+        <li>• PRIVA SRL</li>
+      </ul>
+    </div>
+    
+  </div>
+</div>
+
+  <div class="info-station" data-station="3">
+    <button class="info-station__trigger">
+      <span class="info-station__icon">+</span>
+      <span class="info-station__title">PARTNERS</span>
+    </button>
+    <div class="info-station__content">
+      <h4 class="info-station__subtitle">PARTNERS ESTRATÉGICOS</h4>
+      <ul class="info-station__list">
+        <li>- CRUZZOLIN</li>
+        <li>- INGALL</li>
+        <li>- TYD ELECTRICA</li>
+        <li>- ELEKTROGEN DE ARGENTINA S.A</li>
+        <li>- SEI S.A</li>
+      </ul>
+    </div>
+  </div>
+</div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SECCIÓN 8: CTA
+    ========================================================== -->
+    <section id="contacto" class="section-cta" aria-labelledby="cta-heading" style="background-image: url('/assets/images/cta-bg.jpg'); background-size: cover; background-position: center; background-blend-mode: luminosity;">
+      <div class="container">
+        <div class="cta-band">
+          <div class="cta-band__text">
+            <h2 id="cta-heading" class="cta-band__title">¿Tenés un proyecto en mente?</h2>
+            <p class="cta-band__subtitle">Contanos qué necesitás y te preparamos una propuesta técnica sin costo.</p>
+          </div>
+          
+          <div class="cta-band__actions">
+            <div class="cta-contacts">
+              <p class="cta-contacts__label">Contactá a nuestro equipo</p>
+              <div class="cta-contacts__list">
+                <a href="mailto:maxi@carsetti.com.ar" class="cta-contact-item">
+                  <span class="cta-contact-item__avatar">M</span>
+                  <span class="cta-contact-item__info">
+                    <span class="cta-contact-item__name">Maxi</span>
+                    <span class="cta-contact-item__email">maxi@carsetti.com.ar</span>
+                    <span class="cta-contact-item__phone">+54 9 11 0000-0001</span>
+                  </span>
+                </a>
+                <a href="mailto:pablo@carsetti.com.ar" class="cta-contact-item">
+                  <span class="cta-contact-item__avatar">P</span>
+                  <span class="cta-contact-item__info">
+                    <span class="cta-contact-item__name">Pablo</span>
+                    <span class="cta-contact-item__email">pablo@carsetti.com.ar</span>
+                    <span class="cta-contact-item__phone">+54 9 11 0000-0002</span>
+                  </span>
+                </a>
+                <a href="mailto:walter@carsetti.com.ar" class="cta-contact-item">
+                  <span class="cta-contact-item__avatar">W</span>
+                  <span class="cta-contact-item__info">
+                    <span class="cta-contact-item__name">Walter</span>
+                    <span class="cta-contact-item__email">walter@carsetti.com.ar</span>
+                    <span class="cta-contact-item__phone">+54 9 11 0000-0003</span>
+                  </span>
+                </a>
+              </div>
+              <div class="site-footer__social" aria-label="Redes sociales">
+  <a href="https://www.linkedin.com/company/fabriano" class="site-footer__social-link" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width:24px; height:24px; display:block;">
+  </a>
+  <a href="https://www.instagram.com/fabriano_ing" class="site-footer__social-link" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" style="width:24px; height:24px; display:block;">
+  </a>
+  <a href="https://wa.me/5491100000000" class="site-footer__social-link" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width:24px; height:24px; display:block;">
+  </a>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo" aria-label="Pie de página">
+    <div class="site-footer__bottom">
+      <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+        <p style="color:rgba(255,255,255,.5); font-size:.8rem; margin:0;">
+          Ingeniería eléctrica industrial con más de 20 años de experiencia en proyectos de alta complejidad. — Buenos Aires, Argentina
+        </p>
+        <p class="site-footer__legal" style="margin:0;">
+          &copy; 2026 Tecnoindustrias Carsetti S.A. — Todos los derechos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       LIGHTBOX
+  ============================================================ -->
+  <div id="image-lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de imagen" aria-hidden="true" tabindex="-1">
+    <div class="lightbox__backdrop" aria-hidden="true"></div>
+    <div class="lightbox__container">
+      <button class="lightbox__close" aria-label="Cerrar imagen"><span aria-hidden="true">&times;</span></button>
+      <figure class="lightbox__figure">
+        <img src="" alt="" class="lightbox__image" id="lightbox-image" />
+        <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
+      </figure>
+      <button class="lightbox__prev" aria-label="Imagen anterior"><span aria-hidden="true">&#8592;</span></button>
+      <button class="lightbox__next" aria-label="Imagen siguiente"><span aria-hidden="true">&#8594;</span></button>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       PROJECT CHOOSER MODAL
+  ============================================================ -->
+  <div id="projectChooser-modal" class="projectChooser-overlay" role="dialog" aria-modal="true" aria-labelledby="projectChooser-title" aria-hidden="true" tabindex="-1">
+    <div class="projectChooser-backdrop" aria-hidden="true"></div>
+    <div class="projectChooser-box" role="document">
+      <button type="button" class="projectChooser-close" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+      <p id="projectChooser-title" class="projectChooser-heading">¿Qué te interesaría ver?</p>
+      <div class="projectChooser-options">
+        <button type="button" class="projectChooser-btn projectChooser-btn--primary" id="projectChooser-scroll">Proyectos destacados</button>
+        <a href="gallery.html" class="projectChooser-btn projectChooser-btn--secondary" id="projectChooser-gallery">Galería de proyectos completa</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    (function() {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+
+      var header = document.querySelector('.site-header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          header.classList.toggle('is-scrolled', window.scrollY > 40);
+        }, { passive: true });
+      }
+
+      function animateCounter(el) {
+        var target = parseInt(el.getAttribute('data-count-to'), 10);
+        var suffix = el.textContent.indexOf('+') !== -1 ? '+' : '';
+        var dur = 1800;
+        var start = null;
+        function step(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.floor(ease * target) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      var statsObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('[data-count-to]').forEach(animateCounter);
+            statsObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      var statsEl = document.querySelector('.hero__stats');
+      if (statsEl) statsObs.observe(statsEl);
+
+      document.querySelectorAll('.why-us__pillar').forEach(function(el, i) {
+        el.classList.add('reveal', 'reveal--left');
+        el.style.transitionDelay = (i * 90) + 'ms';
+        io.observe(el);
+      });
+
+      document.querySelectorAll('.project-card').forEach(function(el, i) {
+        el.classList.add('reveal', 'reveal--scale');
+        el.style.transitionDelay = (i * 80) + 'ms';
+        io.observe(el);
+      });
+    })();
+  </script>
+
+  <script src="assets/js/projects-chooser.js" defer></script>
+  <script src="assets/js/services-tabs.js" defer></script>
+
+  <script>
+    (function () {
+      function initContactDropdowns() {
+        var dropdowns = document.querySelectorAll('.contact-dropdown');
+
+        dropdowns.forEach(function (dd) {
+          var trigger = dd.querySelector('.contact-dropdown__trigger');
+          if (!trigger) return;
+
+          trigger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = dd.classList.contains('is-open');
+            // Cerrar todos los demás
+            dropdowns.forEach(function (other) {
+              if (other !== dd) {
+                other.classList.remove('is-open');
+                var t = other.querySelector('.contact-dropdown__trigger');
+                if (t) t.setAttribute('aria-expanded', 'false');
+              }
+            });
+            dd.classList.toggle('is-open', !isOpen);
+            trigger.setAttribute('aria-expanded', String(!isOpen));
+          });
+        });
+
+        // Cerrar al hacer click fuera
+        document.addEventListener('click', function () {
+          dropdowns.forEach(function (dd) {
+            dd.classList.remove('is-open');
+            var t = dd.querySelector('.contact-dropdown__trigger');
+            if (t) t.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        // Cerrar con Escape
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            dropdowns.forEach(function (dd) {
+              dd.classList.remove('is-open');
+              var t = dd.querySelector('.contact-dropdown__trigger');
+              if (t) t.setAttribute('aria-expanded', 'false');
+            });
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initContactDropdowns);
+      } else {
+        initContactDropdowns();
+      }
+    })();
+  </script>
+
+</body>
+</html>
