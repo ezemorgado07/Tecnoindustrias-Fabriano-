@@ -97,19 +97,13 @@ body::before {
   gap: var(--sp-8);
 }
 
+/* OPTION 2: Texto Eléctrico de Alto Contraste */
 .hero__eyebrow {
-  font-size: 1.35rem;
-  letter-spacing: .22em;
-  color: var(--clr-accent);
-  margin-bottom: var(--sp-5);
-  display: inline-flex;
-  align-items: center;
-  gap: .8rem;
-  position: relative;
-}
-.hero__eyebrow {
-  /* El texto pequeño de arriba: "Ingeniería eléctrica industrial" */
-  color: #FFFFFF; /* Cambiamos de azul oscuro a blanco puro para máxima lectura */
+  color: #72A3EC !important;  /* Un azul/celeste brillante que brilla sobre cualquier fondo */
+  font-weight: 700 !important; /* Le damos un poquito más de cuerpo a la letra */
+  text-transform: uppercase;  /* Mayúsculas para aspecto más de ingeniería */
+  letter-spacing: 2px;        /* Espaciado técnico */
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5); /* Sombra sutil negra atrás para despegarlo de la imagen */
 }
 
 .hero__title {
