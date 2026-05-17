@@ -97,13 +97,18 @@ body::before {
   gap: var(--sp-8);
 }
 
-/* OPTION 2: Texto Eléctrico de Alto Contraste */
+/* OPTION 1: Estilo Etiqueta Industrial para el Eyebrow */
 .hero__eyebrow {
-  color: #72A3EC !important;  /* Un azul/celeste brillante que brilla sobre cualquier fondo */
-  font-weight: 700 !important; /* Le damos un poquito más de cuerpo a la letra */
-  text-transform: uppercase;  /* Mayúsculas para aspecto más de ingeniería */
-  letter-spacing: 2px;        /* Espaciado técnico */
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5); /* Sombra sutil negra atrás para despegarlo de la imagen */
+  color: #FFFFFF !important;              /* Blanco puro para máxima lectura */
+  background-color: rgba(27, 79, 155, 0.25); /* Fondo azul de tu logo semi-transparente */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil blanco */
+  display: inline-block;                  /* Para que el fondo no ocupe todo el ancho */
+  padding: 6px 16px;                      /* Espaciado interno para que respire */
+  border-radius: 4px;                     /* Bordes apenas redondeados, muy limpio */
+  text-transform: uppercase;              /* En mayúsculas queda más imponente */
+  letter-spacing: 1.5px;                  /* Separación entre letras técnica */
+  backdrop-filter: blur(4px);             /* Efecto esmerilado con la foto de fondo */
+  margin-bottom: 12px;                    /* Separación con el título principal */
 }
 
 .hero__title {
